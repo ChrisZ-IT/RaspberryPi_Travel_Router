@@ -73,5 +73,7 @@ Note: The steps given in this section will erase all existing content on your mi
 2. https://www.raspberrypi.org/
 
 # TODO
-1. Add screenshots.
-2. Add TOC.
+1. Add screenshots
+2. Add TOC
+3. Add more links to helpful resources
+4. Refactor roles with handlers with 'block' blocks
