@@ -64,7 +64,7 @@ Note: The steps given in this section will erase all existing content on your mi
 5. Enter the ssid and passphrase for the wifi network you want your external devices connect to when you travel.
 6. Enter the ssid and passphrase of the wifi network you want your Pi to connect to for internet.
    1. I'm using my old iphone7 hot spot in this example. You would just need to update /etc/wpa_supplicant/wpa_supplicant-wlan0.conf file when ever you need to connect to new wifi networks when you travel. I usually just do this via ssh since its quick.
-        1. *wpa_passphrase {{ wan_ssid }} {{ wan_pass_phrase }} >> /etc/wpa_supplicant/wpa_supplicant-wlan0.conf*
+        • *wpa_passphrase {{ wan_ssid }} {{ wan_pass_phrase }} >> /etc/wpa_supplicant/wpa_supplicant-wlan0.conf*
  7. The playbooks take a 10-15 minutes to run though depending on how many OS updates there are.
 
 # Helpful resources
