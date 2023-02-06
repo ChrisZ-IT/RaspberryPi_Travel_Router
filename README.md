@@ -51,20 +51,20 @@ Note: The steps given in this section will erase all existing content on your mi
         1.  rename this file to client.ovpn if its not called client.ovpn
         2.  I highly recommend you add your client.ovpn to your .gitignore file before you ever push this repo to your own repo
 5. Update the tasks in roles/initial_setup/tasks to match your country & timezone.
-   1. Verify you locale. vim roles/initial_setup/tasks/set_locale.yml.
-   2. Verify your wifi country. vim roles/initial_setup/tasks/set_wifi_country.yml
-   3. Set/Verify your timezone(optional). vim roles/initial_setup/tasks/set_timezone
+   1. Verify you locale. ```vim roles/initial_setup/tasks/set_locale.yml```
+   2. Verify your wifi country. ```vim roles/initial_setup/tasks/set_wifi_country.yml```
+   3. Set/Verify your timezone(optional). ```vim roles/initial_setup/tasks/set_timezone```
 
 # Running Ansible
 1. From your control node and within the root folder of the cloned repo run the following command.
-   1. ansible-playbook install_vpn -K --user pi -i inventory
+   1. ```ansible-playbook install_vpn -K --user pi -i inventory```
 2. Enter the default password for the pi user (raspberry)
 3. Enter the desired username and password for your new user (this will replace the pi user)
 4. Enter the username and password of the account you use to log into your VPN (this is to setup auto vpn login on boot)
 5. Enter the ssid and passphrase for the wifi network you want your external devices connect to when you travel.
 6. Enter the ssid and passphrase of the wifi network you want your Pi to connect to for internet.
    1. I'm using my old iphone7 hot spot in this example. You would just need to update /etc/wpa_supplicant/wpa_supplicant-wlan0.conf file when ever you need to connect to new wifi networks when you travel. I usually just do this via ssh since its quick.
-        • *wpa_passphrase {{ wan_ssid }} {{ wan_pass_phrase }} >> /etc/wpa_supplicant/wpa_supplicant-wlan0.conf*
+        ```wpa_passphrase {{ wan_ssid }} {{ wan_pass_phrase }} >> /etc/wpa_supplicant/wpa_supplicant-wlan0.conf```
  7. The playbooks take a 10-15 minutes to run though depending on how many OS updates there are.
 
 # Helpful resources
