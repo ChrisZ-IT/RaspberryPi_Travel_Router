@@ -10,7 +10,6 @@ In this document we’ll show you how to edit the ansible playbooks to configure
   # What's Not covered
     • How to setup an OpenVPN Server’s
     • How to setup your ansible control server (It just needs ansible & git installed)
-           Before you begin
   # You’ll need:
     • A Raspberry Pi (I used a Pi 3B+ and a 4b for testing)
     • A microSD card (8 GB or more recommended).
@@ -47,7 +46,7 @@ Note: The steps given in this section will erase all existing content on your mi
 4.  Close the ssh connect to the pi (exit)
     1.  Clone down this repository and edit the playbooks.
     2.  Clone down this repository into a directory on your control server.
-    3.  Update the inventory file with your raspberry pi’s IP to it. (“sudo vim /etc/ansible/hosts”)
+    3.  Update the inventory file with your raspberry pi’s IP to it.
     4.  Next copy your client.ovpn file to the “files” folder
         1.  rename this file to client.ovpn if its not called client.ovpn
         2.  I highly recommend you add your client.ovpn to your .gitignore file before you ever push this repo to your own repo
