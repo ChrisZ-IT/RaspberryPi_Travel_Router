@@ -22,7 +22,7 @@
   ansible.builtin.lineinfile:
     path: /etc/network/interfaces
     line: |
-          #bridge interface(internal)
+          # bridge interface(internal)
           iface br0 inet static
           bridge_ports wlan1 eth1
           address 172.16.35.1
@@ -37,7 +37,7 @@
 #   ansible.builtin.lineinfile:
 #     path: /etc/network/interfaces
 #     line: |
-#           #eth1(USB NIC, Internal Network)
+#           # eth1(USB NIC, Internal Network)
 #           allow-hotplug eth1
 #           iface eth1 inet manual
 #     state: present
@@ -46,7 +46,7 @@
   ansible.builtin.lineinfile:
     path: /etc/network/interfaces
     line: |
-          #wireless wlan1 (internal)
+          # wireless wlan1 (internal)
           allow-hotplug wlan1
           iface wlan1 inet manual
           wpa-conf /etc/wpa_supplicant/wpa_supplicant-wlan1.conf
