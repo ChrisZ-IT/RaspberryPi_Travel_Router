@@ -20,7 +20,7 @@ In this document we’ll show you how to edit the ansible playbooks to configure
       ## This doc assumes you use username/password to auth to your VPN server. ##
     • An ansible “control node” (the machine that runs Ansible). To avoid issues following along with this, I would make sure you are running ansible core 2.12.2 or higher.
     • The Ansible community module installed on your control node.
-    ansible-galaxy collection install community.general
+      ansible-galaxy collection install community.general
 
 # Install Raspberry Pi OS Lite SD card
 The first step is to install Raspberry Pi OS Lite on your Raspberry Pi and connect it to the network. Since I don't like to disable host_key_checking in my ansible.conf file I add my ansible control server’s public key to my Pi OS when I image the SD card with pi imager.
@@ -71,3 +71,7 @@ Note: The steps given in this section will erase all existing content on your mi
 # Helpful resources
 1. https://docs.ansible.com/ansible/latest/index.html
 2. https://www.raspberrypi.org/
+
+# TODO
+1. Add screenshots.
+2. Add TOC.
