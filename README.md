@@ -69,5 +69,5 @@ Note: The steps given in this section will erase all existing content on your mi
  7. The playbooks take a 10-15 minutes to run though depending on how many OS updates there are.
 
 # Helpful resources
-https://docs.ansible.com/ansible/latest/index.html
-https://www.raspberrypi.org/
+1. https://docs.ansible.com/ansible/latest/index.html
+2. https://www.raspberrypi.org/
