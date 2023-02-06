@@ -1,0 +1,7 @@
+---
+- name: Ensure bluetooth is disabled
+  ansible.builtin.lineinfile:
+    path: /boot/config.txt
+    line: 'dtoverlay=disable-bt'
+    state: present
+  register: task_result

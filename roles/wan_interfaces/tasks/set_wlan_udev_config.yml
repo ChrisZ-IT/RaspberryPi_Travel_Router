@@ -1,0 +1,9 @@
+---
+- name: Ensure wlan0 is always the usb wlan adapter
+  ansible.builtin.lineinfile:
+    path: /etc/udev/rules.d/10-network-device.rules
+    line: 'SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="{{ ansible_facts.wlan0.macaddress }}", NAME="wlan0"'
+    owner: root
+    mode: 0644
+    create: true
+    state: present

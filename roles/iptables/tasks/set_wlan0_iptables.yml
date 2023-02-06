@@ -1,0 +1,87 @@
+---
+- name: Ensures inbound SSH is droped on wlan0
+  ansible.builtin.iptables:
+    table: filter
+    chain: INPUT
+    protocol: tcp
+    match: tcp
+    destination_port: 22
+    in_interface: wlan0
+    jump: DROP
+    state: present
+
+- name: Ensures inbound 443 is droped on wlan0
+  ansible.builtin.iptables:
+    table: filter
+    chain: INPUT
+    protocol: tcp
+    match: tcp
+    destination_port: 443
+    in_interface: wlan0
+    jump: DROP
+    state: present
+
+- name: Ensures inbound icmp is droped on wlan0
+  ansible.builtin.iptables:
+    table: filter
+    chain: INPUT
+    protocol: icmp
+    match: icmp
+    icmp_type: 8
+    in_interface: wlan0
+    jump: DROP
+    state: present
+
+- name: Ensures inbound traffic from 10.0.0.0/8 is droped on wlan0
+  ansible.builtin.iptables:
+    table: filter
+    chain: INPUT
+    source: 10.0.0.0/8
+    in_interface: wlan0
+    jump: DROP
+    state: present
+
+- name: Ensures inbound traffic from 172.16.0.0/12 is droped on wlan0
+  ansible.builtin.iptables:
+    table: filter
+    chain: INPUT
+    source: 172.16.0.0/12
+    in_interface: wlan0
+    jump: DROP
+    state: present
+
+- name: Ensures inbound traffic from 192.168.0.0/24 is droped on wlan0
+  ansible.builtin.iptables:
+    table: filter
+    chain: INPUT
+    source: 192.168.0.0/24
+    in_interface: wlan0
+    jump: DROP
+    state: present
+
+- name: Ensures inbound traffic from 224.0.0.0/4 is droped on wlan0
+  ansible.builtin.iptables:
+    table: filter
+    chain: INPUT
+    source: 224.0.0.0/4
+    in_interface: wlan0
+    jump: DROP
+    state: present
+
+- name: Ensures inbound traffic from 240.0.0.0/5 is droped on wlan0
+  ansible.builtin.iptables:
+    table: filter
+    chain: INPUT
+    source: 240.0.0.0/5
+    in_interface: wlan0
+    jump: DROP
+    state: present
+
+- name: Ensures inbound traffic from 127.0.0.0/8 is droped on wlan0
+  ansible.builtin.iptables:
+    table: filter
+    chain: INPUT
+    source: 127.0.0.0/8
+    in_interface: wlan0
+    jump: DROP
+    state: present

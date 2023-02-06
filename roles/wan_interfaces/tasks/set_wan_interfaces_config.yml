@@ -1,0 +1,28 @@
+---
+- name: Ensure onboard wan (eth0) interface is present
+  ansible.builtin.lineinfile:
+    path: /etc/network/interfaces
+    line: |
+          # onboard interface (WAN connection)
+          auto eth0
+          iface eth0 inet dhcp
+    state: present
+
+# - name: Ensure USB wan (iphone/eth2) is present
+#   ansible.builtin.lineinfile:
+#     path: /etc/network/interfaces
+#     line: |
+#           # eth2 Iphone USB WAN (uncomment if connecting via this method and reboot)
+#           # auto eth2
+#           # iface eth2 inet dhcp
+#     state: present
+
+- name: Ensure wireless wan (wlan0) is present
+  ansible.builtin.lineinfile:
+    path: /etc/network/interfaces
+    line: |
+          # wireless wlan0 (USB Wireless, WAN)
+          allow-hotplug wlan0
+          iface wlan0 inet dhcp
+          wpa-conf /etc/wpa_supplicant/wpa_supplicant-wlan0.conf
+    state: present

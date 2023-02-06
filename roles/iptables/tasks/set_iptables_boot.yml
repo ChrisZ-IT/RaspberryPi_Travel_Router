@@ -1,0 +1,15 @@
+---
+- name: Save current state of the firewall in system file
+  community.general.iptables_state:
+    state: saved
+    path: /etc/iptables.ipv4.nat
+  register: iptables_change
+
+- name: Ensure iptable load on boot
+  ansible.builtin.lineinfile:
+    path: /etc/rc.local
+    regexp: '^exit 0'
+    line: |
+          iptables-restore < /etc/iptables.ipv4.nat
+          exit 0
+    state: present

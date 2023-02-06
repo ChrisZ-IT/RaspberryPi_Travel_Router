@@ -1,0 +1,79 @@
+---
+- name: Ensure Pi travel router baseline is set
+  hosts: raspberry_pis
+  vars_prompt:
+  - name: new_user_username
+    prompt: Enter new user's Username (this will replace the default 'pi' user)
+    private: false
+
+  - name: new_user_password
+    prompt: Enter new user's Password
+    private: true
+    encrypt: sha512_crypt
+    confirm: true
+    salt_size: 7
+
+  - name: vpn_username
+    prompt: Enter your VPN's username (the account you use to connect to your VPN Server)
+    private: false
+
+  - name: vpn_password
+    prompt: Enter your VPN's Password
+    private: true
+    confirm: true
+
+  - name: lan_ssid
+    prompt: Enter ssid of lan wifi (the ssid the pi hosts for devices to connect to)
+    private: false
+
+  - name: lan_pass_phrase
+    prompt: Enter the passphrase of the lan wifi (Passphrase you will use to connect TO THE raspberry pi)
+    private: true
+    confirm: true
+
+  - name: wan_ssid
+    prompt: Enter ssid of wan wifi (the ssid the pi connects to for internet)
+    private: false
+
+  - name: wan_pass_phrase
+    prompt: Enter the passphrase of the wan wifi (the passphrase of the wifi your pi connects to for internet)
+    private: true
+    confirm: true
+  become: true
+  tasks:
+    - name: Ensure intial setup is run
+      ansible.builtin.include_role:
+        name: inital_setup
+
+    - name: Ensure ssh hardening is run
+      ansible.builtin.include_role:
+        name: ssh_hardening
+
+    - name: Ensure openvpn_client_setup is run
+      ansible.builtin.include_role:
+        name: openvpn_client_setup
+
+    - name: Ensure dhcpd_setup is run
+      ansible.builtin.include_role:
+        name: dhcpd_setup
+
+    - name: Ensure wan_interfaces is run
+      ansible.builtin.include_role:
+        name: wan_interfaces
+
+    - name: Ensure lan_interfaces is run
+      ansible.builtin.include_role:
+        name: lan_interfaces
+
+    - name: Ensure iptables is run
+      ansible.builtin.include_role:
+        name: iptables
+
+    - name: Ensure default pi user is removed
+      ansible.builtin.include_role:
+        name: remove_default_user
+      become: true
+      become_method: su
+      become_user: {{ new_user_username }}
+      # vars:
+      #   ansible_become_pass: "{{ new_user_password }}"

@@ -1,0 +1,3 @@
+---
+# handlers file for ssh_hardening
+- ansible.builtin.include_tasks: "{{ role_path }}/handlers/restart_ssh.yml"

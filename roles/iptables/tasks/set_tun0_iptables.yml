@@ -1,0 +1,28 @@
+---
+- name: Ensures all outbound traffic from 172.16.35.0/24 is forwared though tun0
+  ansible.builtin.iptables:
+    table: filter
+    chain: FORWARD
+    source: 172.16.35.0/24
+    out_interface: tun0
+    jump: ACCEPT
+    state: present
+
+- name: Ensures all inbound traffic to 172.16.35.0/24 is forwared though tun0
+  ansible.builtin.iptables:
+    table: filter
+    chain: FORWARD
+    destination: 172.16.35.0/24
+    in_interface: tun0
+    match: state
+    ctstate: RELATED,ESTABLISHED
+    jump: ACCEPT
+    state: present
+
+- name: Ensures masqurade routing goes out of tun0
+  ansible.builtin.iptables:
+    table: nat
+    chain: POSTROUTING
+    out_interface: tun0
+    jump: MASQUERADE
+    state: present

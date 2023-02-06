@@ -1,0 +1,3 @@
+---
+# tasks file for remove_default_user
+- ansible.builtin.include_tasks: "{{ role_path }}/tasks/remove_user.yml"

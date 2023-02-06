@@ -1,0 +1,8 @@
+---
+# tasks file for lan_interfaces
+- ansible.builtin.include_tasks: "{{ role_path }}/tasks/install_bridge_utils.yml"
+- ansible.builtin.include_tasks: "{{ role_path }}/tasks/set_lan_interfaces.yml"
+- ansible.builtin.include_tasks: "{{ role_path }}/tasks/set_lan_wlan_supplicant.yml"
+- ansible.builtin.include_tasks: "{{ role_path }}/tasks/install_hostapd.yml"
+- ansible.builtin.include_tasks: "{{ role_path }}/tasks/set_hostapd_config.yml"
+- ansible.builtin.include_tasks: "{{ role_path }}/tasks/set_hostapd_service.yml"

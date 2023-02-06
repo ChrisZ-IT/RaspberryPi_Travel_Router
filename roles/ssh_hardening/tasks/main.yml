@@ -1,0 +1,3 @@
+---
+# tasks file for ssh_hardening
+- ansible.builtin.include_tasks: "{{ role_path }}/tasks/ssh_security_baseline.yml"

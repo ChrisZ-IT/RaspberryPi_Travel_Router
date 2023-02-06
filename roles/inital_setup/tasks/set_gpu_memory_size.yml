@@ -1,0 +1,7 @@
+---
+- name: Ensure gpu memory is set to 16Mb
+  ansible.builtin.lineinfile:
+    path: /boot/config.txt
+    line: 'gpu_mem=16'
+    state: present
+  register: task_result

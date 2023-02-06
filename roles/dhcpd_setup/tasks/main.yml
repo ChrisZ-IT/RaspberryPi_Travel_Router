@@ -1,0 +1,5 @@
+---
+# tasks file for dhcpd_setup
+- ansible.builtin.include_tasks: "{{ role_path }}/tasks/install_dhcpd.yml"
+- ansible.builtin.include_tasks: "{{ role_path }}/tasks/set_dhcpd_config.yml"
+- ansible.builtin.include_tasks: "{{ role_path }}/tasks/set_dhcpd_service.yml"

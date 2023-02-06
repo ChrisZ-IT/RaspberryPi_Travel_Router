@@ -1,0 +1,3 @@
+---
+# handlers file for remove_default_user
+- ansible.builtin.include_tasks: "{{ role_path }}/handlers/reboot.yml"

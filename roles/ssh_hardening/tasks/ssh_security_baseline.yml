@@ -1,0 +1,197 @@
+---
+- name: Set SSH Allowed Users
+  ansible.builtin.lineinfile:
+    path: /etc/ssh/sshd_config
+    line: 'AllowUsers {{ new_user_username }}'
+    state: present
+  notify:
+    - Restart sshd
+
+- name: Syncronize authorized_keys
+  ansible.builtin.copy:
+    src: ~/.ssh/authorized_keys
+    dest: /home/{{ new_user_username }}/.ssh/authorized_keys
+    owner: "{{ new_user_username }}"
+    group: "{{ new_user_username }}"
+    mode: '0644'
+
+- name: Set SSH KexAlgorithms
+  ansible.builtin.lineinfile:
+    path: /etc/ssh/sshd_config
+    line: 'KexAlgorithms diffie-hellman-group-exchange-sha256'
+    state: present
+  notify:
+    - Restart sshd
+
+- name: Set SSH Ciphers
+  ansible.builtin.lineinfile:
+    path: /etc/ssh/sshd_config
+    line: 'Ciphers aes128-ctr,aes192-ctr,aes256-ctr,aes128-cbc,aes192-cbc,aes256-cbc'
+    state: present
+  notify:
+    - Restart sshd
+
+- name: Set SSH MACs
+  ansible.builtin.lineinfile:
+    path: /etc/ssh/sshd_config
+    line: 'MACs hmac-sha2-256,hmac-sha2-512'
+    state: present
+  notify:
+    - Restart sshd
+
+- name: Set SSH loglevel to verbose
+  ansible.builtin.lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: '^#LogLevel INFO'
+    line: 'LogLevel VERBOSE'
+    state: present
+  notify:
+    - Restart sshd
+
+# - name: Set log sftp level file access
+#   ansible.builtin.lineinfile:
+#    path: /etc/ssh/sshd_config
+#    regexp: '^Subsystem\s+sftp\s+/usr/lib/openssh/sftp-server'
+#    line: 'Subsystem sftp /usr/lib/openssh/sftp-server -f AUTHPRIV -l INFO'
+#    state: present
+#   notify:
+#     - Restart sshd
+
+- name: Disable SSH root login
+  ansible.builtin.lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: '^#PermitRootLogin'
+    line: 'PermitRootLogin no'
+    state: present
+  notify:
+    - Restart sshd
+
+- name: Disable SSH password authentication
+  ansible.builtin.lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: '^#PasswordAuthentication yes'
+    line: 'PasswordAuthentication no'
+    state: present
+  notify:
+    - Restart sshd
+
+- name: Disable SSH Empty Passwords
+  ansible.builtin.lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: '^#PermitEmptyPasswords no'
+    line: 'PermitEmptyPasswords no'
+    state: present
+  notify:
+    - Restart sshd
+
+- name: SSH Login Grace Time
+  ansible.builtin.lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: '^#LoginGraceTime 2m'
+    line: 'LoginGraceTime 20s'
+    state: present
+  notify:
+    - Restart sshd
+
+- name: SSH Max Auth Tries
+  ansible.builtin.lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: '^#MaxAuthTries 6'
+    line: 'MaxAuthTries 3'
+    state: present
+  notify:
+    - Restart sshd
+
+- name: SSH Max Sessions
+  ansible.builtin.lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: '^#MaxSessions 10'
+    line: 'MaxSessions 3'
+    state: present
+  notify:
+    - Restart sshd
+
+- name: SSH Public Key Auth
+  ansible.builtin.lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: '^#PubkeyAuthentication yes'
+    line: 'PubkeyAuthentication yes'
+    state: present
+  notify:
+    - Restart sshd
+
+- name: SSH AuthorizedKeysFile location
+  ansible.builtin.lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: "^#AuthorizedKeysFile     .ssh/authorized_keys .ssh/authorized_keys2"
+    line: "AuthorizedKeysFile      .ssh/authorized_keys"
+    state: present
+  notify:
+    - Restart sshd
+
+- name: Disable SSH PAM
+  ansible.builtin.lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: '^UsePAM yes'
+    line: 'UsePAM no'
+    state: present    - Restart sshd
+  notify:
+    - Restart sshd
+
+- name: Set SSH Client AliveInterval
+  ansible.builtin.lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: '^#ClientAliveInterval 0'
+    line: 'ClientAliveInterval 180'
+    state: present
+  notify:
+    - Restart sshd
+
+- name: Set SSH Banner
+  ansible.builtin.lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: '^#Banner none'
+    line: 'Banner /etc/issue.net'
+    state: present
+  notify:
+    - Restart sshd
+
+- name: Ensure SSH Banner is set
+  ansible.builtin.copy:
+    src: files/issue.net
+    dest: /etc/issue.net
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: Set SSH UsePrivilegeSeparation
+  ansible.builtin.lineinfile:
+    path: /etc/ssh/sshd_config
+    line: 'UsePrivilegeSeparation sandbox'
+    state: present
+  notify:
+    - Restart sshd
+
+- name: Set SSH AuthenticationMethods
+  ansible.builtin.lineinfile:
+    path: /etc/ssh/sshd_config
+    line: 'AuthenticationMethods publickey'
+    state: present
+  notify:
+    - Restart sshd
+
+# - name: Setup alternate SSHd port
+#   ansible.builtin.lineinfile:
+#     dest: /etc/ssh/sshd_config
+#     regexp: '^#Port'
+#     line: 'Port 443'
+#     state: present
+#   notify:
+#     - Restart sshd
+
+# - name: Disable SSH short modulis for DH
+#   ansible.builtin.shell: |-
+#    awk '$5 >= 3071' /etc/ssh/moduli > /tmp/moduli &&
+#    mv /tmp/moduli /etc/ssh/moduli
+#   notify:
+#     - Restart sshd

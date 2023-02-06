@@ -1,0 +1,53 @@
+---
+- name: Ensure br0 is set to auto
+  ansible.builtin.lineinfile:
+    path: /etc/network/interfaces
+    line: 'auto lo br0'
+    state: present
+
+- name: Ensure loopback is set present
+  ansible.builtin.lineinfile:
+    path: /etc/network/interfaces
+    line: 'iface lo inet loopback'
+    state: present
+
+- name: Ensure kernal is allows bridging
+  ansible.builtin.lineinfile:
+    path: /etc/sysctl.conf
+    regexp: '^#net.ipv4.ip_forward=1'
+    line: 'net.ipv4.ip_forward=1'
+    state: present
+
+- name: Ensure br0 interface is present
+  ansible.builtin.lineinfile:
+    path: /etc/network/interfaces
+    line: |
+          #bridge interface(internal)
+          iface br0 inet static
+          bridge_ports wlan1 eth1
+          address 172.16.35.1
+          netmask 255.255.255.0
+          network 172.16.35.0
+          broadcast 172.16.35.255
+          gateway 172.16.35.1
+          post-up iptables-restore < /etc/iptables.ipv4.nat
+    state: present
+
+# - name: Ensure eth1 interface is present
+#   ansible.builtin.lineinfile:
+#     path: /etc/network/interfaces
+#     line: |
+#           #eth1(USB NIC, Internal Network)
+#           allow-hotplug eth1
+#           iface eth1 inet manual
+#     state: present
+
+- name: Ensure wlan1 interface is present
+  ansible.builtin.lineinfile:
+    path: /etc/network/interfaces
+    line: |
+          #wireless wlan1 (internal)
+          allow-hotplug wlan1
+          iface wlan1 inet manual
+          wpa-conf /etc/wpa_supplicant/wpa_supplicant-wlan1.conf
+    state: present

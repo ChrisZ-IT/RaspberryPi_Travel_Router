@@ -1,0 +1,3 @@
+---
+# vars file for lan_interfaces
+- ansible.builtin.include_vars: "{{ role_path }}/vars/lan_ssid.yml"

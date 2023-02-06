@@ -1,0 +1,20 @@
+---
+- name: Ensure os is up to date
+  ansible.builtin.apt:
+    update_cache: true
+    upgrade: true
+  register: task_result
+
+- name: Ensure kernal is up to date
+  ansible.builtin.apt:
+    update_cache: true
+    upgrade: dist
+    autoremove: true
+    autoclean: true
+  register: task_result
+
+- name: Ensure old patches are removed
+  ansible.builtin.apt:
+    autoremove: true
+    autoclean: true
+  register: task_result

@@ -1,0 +1,14 @@
+---
+- name: Ensure locale is set to us.utf-8
+  ansible.builtin.lineinfile:
+    path: /etc/locale.gen
+    regexp: '^#en_US.UTF-8 UTF-8'
+    line: 'en_US.UTF-8 UTF-8'
+    state: present
+
+- name: Ensure locale gb.utf-8 is disabled
+  ansible.builtin.lineinfile:
+    path: /etc/locale.gen
+    regexp: '^en_GB.UTF-8 UTF-8'
+    line: '#en_GB.UTF-8 UTF-8'
+    state: present

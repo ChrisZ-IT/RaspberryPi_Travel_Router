@@ -1,0 +1,6 @@
+---
+- name: Ensure openvpn is enabled
+  ansible.builtin.systemd:
+    name: openvpn
+    enabled: true
+    masked: false

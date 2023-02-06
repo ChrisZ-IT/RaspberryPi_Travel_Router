@@ -1,0 +1,5 @@
+---
+# tasks file for wan_interfaces
+- ansible.builtin.include_tasks: "{{ role_path }}/tasks/set_wan_interfaces_config.yml"
+- ansible.builtin.include_tasks: "{{ role_path }}/tasks/set_wan_wpa_suplicant_config.yml"
+- ansible.builtin.include_tasks: "{{ role_path }}/tasks/set_wlan_udev_config.yml"

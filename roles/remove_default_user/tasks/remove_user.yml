@@ -1,0 +1,7 @@
+---
+- name: Ensures default pi user has been removed.
+  ansible.builtin.user:
+    name: pi
+    remove: true
+    state: absent
+  register: task_result

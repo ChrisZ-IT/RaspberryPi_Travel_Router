@@ -1,0 +1,9 @@
+---
+# tasks file for inital_setup
+- ansible.builtin.include_tasks: "{{ role_path }}/tasks/create_user.yml"
+- ansible.builtin.include_tasks: "{{ role_path }}/tasks/patch_os.yml"
+- ansible.builtin.include_tasks: "{{ role_path }}/tasks/set_gpu_memory_size.yml"
+- ansible.builtin.include_tasks: "{{ role_path }}/tasks/set_bluetooth.yml"
+- ansible.builtin.include_tasks: "{{ role_path }}/tasks/set_wifi_country.yml"
+- ansible.builtin.include_tasks: "{{ role_path }}/tasks/set_locale.yml"
+- ansible.builtin.include_tasks: "{{ role_path }}/tasks/set_timezone.yml"

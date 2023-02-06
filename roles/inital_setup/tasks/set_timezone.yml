@@ -1,0 +1,4 @@
+---
+- name: Ensure timezone is set
+  community.general.timezone:
+    name: America/Denver

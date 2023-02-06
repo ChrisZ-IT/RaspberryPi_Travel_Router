@@ -1,0 +1,6 @@
+---
+- name: Ensure wifi country code is set
+  ansible.builtin.shell:
+    cmd: raspi-config nonint do_wifi_country US
+  args:
+    executable: /bin/bash

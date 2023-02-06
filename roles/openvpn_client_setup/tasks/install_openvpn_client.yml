@@ -1,0 +1,7 @@
+---
+- name: Ensures openvpn has been installed
+  ansible.builtin.apt:
+    update_cache: true
+    install_recommends: true
+    name: openvpn
+    state: present

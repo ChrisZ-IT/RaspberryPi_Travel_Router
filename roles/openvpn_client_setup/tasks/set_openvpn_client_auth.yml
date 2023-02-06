@@ -1,0 +1,15 @@
+---
+- name: Ensure openvpn auto login username is set
+  ansible.builtin.lineinfile:
+    path: /etc/openvpn/auth.txt
+    line: "{{ vpn_username }}"
+    owner: root
+    mode: 0600
+    create: true
+    state: present
+
+- name: Ensure openvpn auto login password is set
+  ansible.builtin.lineinfile:
+    path: /etc/openvpn/auth.txt
+    line: "{{ vpn_password }}"
+    state: present
