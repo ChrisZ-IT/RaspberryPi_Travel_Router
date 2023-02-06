@@ -52,9 +52,9 @@ Note: The steps given in this section will erase all existing content on your mi
         1.  rename this file to client.ovpn if its not called client.ovpn
         2.  I highly recommend you add your client.ovpn to your .gitignore file before you ever push this repo to your own repo
 5. Update the tasks in roles/initial_setup/tasks to match your country & timezone.
-	4a. Verify you locale. vim roles/initial_setup/tasks/set_locale.yml.
-	4b. Verify your wifi country. vim roles/initial_setup/tasks/set_wifi_country.yml
-	4c. Set/Verify your timezone(optional). vim roles/initial_setup/tasks/set_timezone
+   1. Verify you locale. vim roles/initial_setup/tasks/set_locale.yml.
+   2. Verify your wifi country. vim roles/initial_setup/tasks/set_wifi_country.yml
+   3. Set/Verify your timezone(optional). vim roles/initial_setup/tasks/set_timezone
 
 # Running Ansible
 1. From your control node and within the root folder of the cloned repo run the following command.
