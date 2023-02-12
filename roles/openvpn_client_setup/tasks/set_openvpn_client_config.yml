@@ -10,16 +10,19 @@
   ansible.builtin.lineinfile:
     path: /etc/openvpn/home.conf
     line: 'script-security 2'
+    insertafter: 'auth-user-pass auth.txt'
     state: present
 
 - name: Ensure openvpn reloads /etc/resolve.conf on tun0 up
   ansible.builtin.lineinfile:
     path: /etc/openvpn/home.conf
     line: 'up /etc/openvpn/update-resolv-conf'
+    insertafter: 'script-security 2'
     state: present
 
 - name: Ensure openvpn reloads /etc/resolve.conf on tun0 down
   ansible.builtin.lineinfile:
     path: /etc/openvpn/home.conf
     line: 'down /etc/openvpn/update-resolv-conf'
+    insertafter: 'up /etc/openvpn/update-resolv-conf'
     state: present
