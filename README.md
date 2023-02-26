@@ -10,6 +10,7 @@
   - [Boot the Raspberry Pi](#boot-the-raspberry-pi)
   - [Running Ansible](#running-ansible)
   - [Validation \& troubleshooting](#validation--troubleshooting)
+    - [Key Config files for trubleshooting:](#key-config-files-for-trubleshooting)
   - [Connecting to new WiFi networks when you are on the road](#connecting-to-new-wifi-networks-when-you-are-on-the-road)
   - [Patching/Bypassing tunneling (tun0)](#patchingbypassing-tunneling-tun0)
   - [Helpful resources \& references](#helpful-resources--references)
@@ -116,14 +117,14 @@ Note: The steps given in this section will erase all existing content on your mi
    2. You should see tun0 interface if you are connected to vpn.
        ![website view](screenshots/10.png)
    3. You can also troubleshoot this by running ```sudo openvpn --config /etc/openvpn/vpn.conf --auth-user-pass /etc/openvpn/auth.txt```
-4. Key Config files for trubleshooting:
+
+### Key Config files for trubleshooting:
   1. DHCP Server config file - ```/etc/dhcp/dhcpd.conf```
   2. IP tables - ```/etc/iptables.ipv4.nat```
-     1. View current iptables entries ```sudo iptables -L -n -v```
   3. Network interfaces - ```/etc/network/interfaces```
   4. WAN WLAN config(wifi network you pi connects to) - ```/etc/wpa_supplicant/wpa_supplicant-wlan0.conf```
-  5.  LAN WLAN config(Wifi network your other devices connect to) - ```/etc/wpa_supplicant/wpa_supplicant-wlan1.conf```
-  6.  LAN WLAN SSID/Pass config - ```/etc/hostapd/hostapd.conf```
+  5. LAN WLAN config(Wifi network your other devices connect to) - ```/etc/wpa_supplicant/wpa_supplicant-wlan1.conf```
+  6. LAN WLAN SSID/Pass config - ```/etc/hostapd/hostapd.conf```
 
 ## Connecting to new WiFi networks when you are on the road
 1. Power on the Pi
