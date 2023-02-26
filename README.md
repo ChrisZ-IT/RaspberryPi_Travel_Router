@@ -5,13 +5,14 @@ Ansible playbook for configuring a raspberry pi as a travel router that auto con
 
 ## Introduction
 In this document we’ll show you how to edit the ansible playbooks to configure a Raspberry Pi as a travel router that auto connects to an OpenVPN Access Server. This guide was written with the assumption of living in the USA. Playbooks were developed and tested from an ansible control node running ansible [core 2.12.2] at the time of writing.
-  # What's covered
+
+  # What's covered
     • How to create a bootable microSD card with Raspberry Pi OS.
     • How to configure and run these playbooks with your settings.
-  # What's Not covered
+  # What's Not covered
     • How to setup an OpenVPN Server’s
     • How to setup your ansible control server (It just needs ansible & git installed)
-  # You’ll need:
+  # You’ll need:
     • A Raspberry Pi (I used a Pi 3B+ and a 4b for testing)
     • A microSD card (8 GB or more recommended).
     • A USB dongle for your Pi (I've used this one for a few years https://www.amazon.com/dp/B003MTTJOY)
