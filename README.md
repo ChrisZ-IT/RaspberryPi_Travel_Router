@@ -1,8 +1,7 @@
-# RaspberryPi_Travel_Router
-Ansible playbook for configuring a raspberry pi as a travel router that auto connects to VPN on boot.
-## Table of contents
-- [RaspberryPi\_Travel\_Router](#raspberrypi_travel_router)
-  - [Table of contents](#table-of-contents)
+# Table of contents
+
+- [Table of contents](#table-of-contents)
+  - [RaspberryPi\_Travel\_Router](#raspberrypi_travel_router)
   - [Introduction](#introduction)
     - [What's covered](#whats-covered)
     - [What's Not covered](#whats-not-covered)
@@ -13,8 +12,11 @@ Ansible playbook for configuring a raspberry pi as a travel router that auto con
   - [Validation \& troubleshooting](#validation--troubleshooting)
   - [Connecting to new WiFi networks when you are on the road](#connecting-to-new-wifi-networks-when-you-are-on-the-road)
   - [Patching/Bypassing tunneling (tun0)](#patchingbypassing-tunneling-tun0)
-    - [Helpful resources \& references](#helpful-resources--references)
-- [TODO](#todo)
+  - [Helpful resources \& references](#helpful-resources--references)
+  - [TODO](#todo)
+
+## RaspberryPi_Travel_Router
+Ansible playbook for configuring a raspberry pi as a travel router that auto connects to VPN on boot.
 
 ## Introduction
 In this document we’ll show you how to edit the ansible playbooks to configure a Raspberry Pi as a travel router that auto connects to an OpenVPN Access Server. This guide was written with the assumption of living in the USA. Playbooks were developed and tested from an ansible control node running ansible [core 2.12.2] at the time of writing.
@@ -172,7 +174,7 @@ Note: The steps given in this section will erase all existing content on your mi
 9. Reapply iptable rules. ```sudo iptables-restore < /etc/iptables.ipv4.nat```
 10. Validate the rules are blocking inbound traffic again. ```sudo iptables -L -n -v```
 
-### Helpful resources & references
+## Helpful resources & references
 1. https://docs.ansible.com/ansible/latest/index.html
 2. https://www.raspberrypi.org/
 3. https://openvpn.net/community-resources/how-to/
@@ -184,6 +186,6 @@ Note: The steps given in this section will erase all existing content on your mi
 9. https://thepi.io/how-to-use-your-raspberry-pi-as-a-wireless-access-point/
 10. https://forums.raspberrypi.com/viewtopic.php?t=209818
 
-# TODO
+## TODO
 1. Add TOC
 2. Refactor roles with handlers with 'block' blocks
