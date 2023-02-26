@@ -1,7 +1,7 @@
 # RaspberryPi_Travel_Router
 Ansible playbook for configuring a raspberry pi as a travel router that auto connects to VPN on boot.
 ## Table of contents
-
+- [Introduction](#Introduction)
 
 ## Introduction
 In this document we’ll show you how to edit the ansible playbooks to configure a Raspberry Pi as a travel router that auto connects to an OpenVPN Access Server. This guide was written with the assumption of living in the USA. Playbooks were developed and tested from an ansible control node running ansible [core 2.12.2] at the time of writing.
