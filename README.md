@@ -32,6 +32,7 @@ In this document we’ll show you how to edit the ansible playbooks to configure
     • An ansible “control node” (the machine that runs Ansible). To avoid issues following along with this, I would make sure you are running ansible core 2.12.2 or higher.
 
     • The Ansible community module installed on your control node.
+
       ansible-galaxy collection install community.general
 
 ## Install Raspberry Pi OS Lite SD card
