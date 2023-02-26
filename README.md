@@ -28,6 +28,7 @@ In this document we’ll show you how to edit the ansible playbooks to configure
     • Access to a server/service running OpenVPN & a downloaded copy of your client.ovpn file.
 
 *** This doc assumes you use username/password to auth to your VPN server. ***
+
     • An ansible “control node” (the machine that runs Ansible). To avoid issues following along with this, I would make sure you are running ansible core 2.12.2 or higher.
 
     • The Ansible community module installed on your control node.
