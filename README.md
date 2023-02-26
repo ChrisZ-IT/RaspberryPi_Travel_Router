@@ -18,6 +18,7 @@
 
 ## RaspberryPi_Travel_Router
 Ansible playbook for configuring a raspberry pi as a travel router that auto connects to VPN on boot.
+It will route all traffic of the devices you connect to the wifi network the pi presents over that secure vpn tunnel. The idea here is you are putting all your devices behind a firewall and encrypting their traffic instead of directly connecting them to the untrusted networks of say the air b&b or hotel you are at.
 
 ## Introduction
 In this document we’ll show you how to edit the ansible playbooks to configure a Raspberry Pi as a travel router that auto connects to an OpenVPN Access Server. This guide was written with the assumption of living in the USA. Playbooks were developed and tested from an ansible control node running ansible [core 2.12.2] at the time of writing.
@@ -114,7 +115,7 @@ Note: The steps given in this section will erase all existing content on your mi
    1. ```sudo iwconfig wlan0``` You should see the ssid name under ESSID: if its connected
 3. Validate VPN connection
    1. Run ```ip addr show```
-   2. You should see tun0 interface if you are connected to vpn.
+   2. You should see the tun0 interface if you are connected to vpn.
        ![website view](screenshots/10.png)
    3. You can also troubleshoot this by running ```sudo openvpn --config /etc/openvpn/vpn.conf --auth-user-pass /etc/openvpn/auth.txt```
 
