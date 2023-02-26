@@ -2,5 +2,5 @@
 - name: Ensure vpn auto connects on boot
   ansible.builtin.lineinfile:
     path: /etc/default/openvpn
-    line: 'AUTOSTART="home"'
+    line: 'AUTOSTART="vpn"'
     state: present
