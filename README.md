@@ -25,6 +25,7 @@ The first step is to install Raspberry Pi OS Lite on your Raspberry Pi and conne
 Note: The steps given in this section will erase all existing content on your microSD card. If you already have Pi OS running on your Raspberry Pi you can skip the next section
 
 1. Open Raspberry Pi imager
+![website view](screenshots/1.png)
 2. Select “Choose OS”
 3. Select Raspberry Pi OS (Other)
 4. Select “Raspberry Pi OS Lite”
