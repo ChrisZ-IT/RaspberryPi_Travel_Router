@@ -27,7 +27,7 @@ In this document we’ll show you how to edit the ansible playbooks to configure
     • How to configure and run these playbooks with your settings.
 
   ### What's Not covered
-    • How to setup an OpenVPN Server’s
+    • How to setup an OpenVPN Server’s(See links at the bottom of this doc to get started)
 
     • How to setup your ansible control server (It just needs ansible & git installed)
 
@@ -187,5 +187,4 @@ Note: The steps given in this section will erase all existing content on your mi
 10. https://forums.raspberrypi.com/viewtopic.php?t=209818
 
 ## TODO
-1. Add TOC
-2. Refactor roles with handlers with 'block' blocks
+1. Refactor roles with handlers to use 'block' blocks
