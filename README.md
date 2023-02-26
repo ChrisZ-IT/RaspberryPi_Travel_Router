@@ -3,7 +3,7 @@ Ansible playbook for configuring a raspberry pi as a travel router that auto con
 # Table of contents
 [[_TOC_]]
 
-### Introduction
+## Introduction
 In this document we’ll show you how to edit the ansible playbooks to configure a Raspberry Pi as a travel router that auto connects to an OpenVPN Access Server. This guide was written with the assumption of living in the USA. Playbooks were developed and tested from an ansible control node running ansible [core 2.12.2] at the time of writing.
   # What's covered
     • How to create a bootable microSD card with Raspberry Pi OS.
@@ -22,7 +22,7 @@ In this document we’ll show you how to edit the ansible playbooks to configure
     • The Ansible community module installed on your control node.
       ansible-galaxy collection install community.general
 
-### Install Raspberry Pi OS Lite SD card
+## Install Raspberry Pi OS Lite SD card
 The first step is to install Raspberry Pi OS Lite on your Raspberry Pi and connect it to the network. Since I don't like to disable host_key_checking in my ansible.conf file I add my ansible control server’s public key to my Pi OS when I image the SD card with pi imager.
 Note: The steps given in this section will erase all existing content on your microSD card. If you already have Pi OS running on your Raspberry Pi you can skip the next section
 
@@ -45,7 +45,7 @@ Note: The steps given in this section will erase all existing content on your mi
 10. Wait for image to complete
 11. Once complete,un-mount the SD card and put in it your Raspberry Pi.
 
-### Boot the Raspberry Pi
+## Boot the Raspberry Pi
 1. Hard wire your pi into your router.
 2. Get its IP address from your DHCP server(or you can connect a monitor to it and see it at the login screen)
 3. From your ansible control server try and ssh into the Pi (ssh pi@IP_ADDRESS). This will ensure you can connect to the pi from your control server as well as add its public key to your ansible server key store.
@@ -62,7 +62,7 @@ Note: The steps given in this section will erase all existing content on your mi
    2. Verify your wifi country. ```vim roles/initial_setup/tasks/set_wifi_country.yml```
    3. Set/Verify your timezone(optional). ```vim roles/initial_setup/tasks/set_timezone```
 
-### Running Ansible
+## Running Ansible
 1. From your control node and within the root folder of the cloned repo run the following command.
    1. ```ansible-playbook install_vpn -K --user pi -i inventory```
 2. Enter the default password for the pi user (raspberry)
@@ -75,7 +75,7 @@ Note: The steps given in this section will erase all existing content on your mi
       ![website view](screenshots/9.png)
 7. The playbook can take a 10-15 minutes to run though depending on how many OS updates there are.
 
-### Validation & troubleshooting
+## Validation & troubleshooting
 1. Validate your pi is broadcasting the ssid you entered as the ssid of lan wifi.
    1. connect using the passphrase you entered for it.
    2. ssh into your pi (by default this playbook sets the Pi's ip to 172.16.35.1)
@@ -95,7 +95,7 @@ Note: The steps given in this section will erase all existing content on your mi
   5.  LAN WLAN config(Wifi network your other devices connect to) - /etc/wpa_supplicant/wpa_supplicant-wlan1.conf
   6.  LAN WLAN SSID/Pass config - /etc/hostapd/hostapd.conf
 
-### Connecting to new WiFi networks when you are on the road
+## Connecting to new WiFi networks when you are on the road
 1. Power on the Pi
 2. Connect to its wifi network
 3. SSH into it (172.16.35.1)
@@ -115,10 +115,11 @@ Note: The steps given in this section will erase all existing content on your mi
 7.  Validate you are connected
     1.  ```sudo iwconfig wlan0```
 8.  Restart your pi to have it auto connect to VPN.
+
 ***you can run ```iwlist wlan0 scan``` to make sure wlan0 sees this new network if you are having issues here***
 ***you can run ```sudo iwconfig``` validate all your wlan interfaces are detected***
 
-### Patching/Bypassing tunneling all network traffic the VPN tunnel (tun0)
+## Patching/Bypassing tunneling all network traffic the VPN tunnel (tun0)
 1. ```sudo nano /etc/iptables.ipv4.nat```
 2. locate the line ```-A POSTROUTING -o tun0 -j MASQUERADE```
 3. comment that line out ```#-A POSTROUTING -o tun0 -j MASQUERADE```
