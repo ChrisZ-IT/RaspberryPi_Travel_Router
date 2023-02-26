@@ -1,7 +1,20 @@
 # RaspberryPi_Travel_Router
 Ansible playbook for configuring a raspberry pi as a travel router that auto connects to VPN on boot.
 ## Table of contents
-- [Introduction](#Introduction)
+- [RaspberryPi\_Travel\_Router](#raspberrypi_travel_router)
+  - [Table of contents](#table-of-contents)
+  - [Introduction](#introduction)
+    - [What's covered](#whats-covered)
+    - [What's Not covered](#whats-not-covered)
+    - [What You’ll need:](#what-youll-need)
+  - [Install Raspberry Pi OS Lite](#install-raspberry-pi-os-lite)
+  - [Boot the Raspberry Pi](#boot-the-raspberry-pi)
+  - [Running Ansible](#running-ansible)
+  - [Validation \& troubleshooting](#validation--troubleshooting)
+  - [Connecting to new WiFi networks when you are on the road](#connecting-to-new-wifi-networks-when-you-are-on-the-road)
+  - [Patching/Bypassing tunneling (tun0)](#patchingbypassing-tunneling-tun0)
+    - [Helpful resources \& references](#helpful-resources--references)
+- [TODO](#todo)
 
 ## Introduction
 In this document we’ll show you how to edit the ansible playbooks to configure a Raspberry Pi as a travel router that auto connects to an OpenVPN Access Server. This guide was written with the assumption of living in the USA. Playbooks were developed and tested from an ansible control node running ansible [core 2.12.2] at the time of writing.
@@ -16,7 +29,7 @@ In this document we’ll show you how to edit the ansible playbooks to configure
 
     • How to setup your ansible control server (It just needs ansible & git installed)
 
-  ### You’ll need:
+  ### What You’ll need:
     • A Raspberry Pi (I used a Pi 3B+ and a 4b for testing)
 
     • A microSD card (8 GB or more recommended).
@@ -35,7 +48,7 @@ In this document we’ll show you how to edit the ansible playbooks to configure
 
       ansible-galaxy collection install community.general
 
-## Install Raspberry Pi OS Lite SD card
+## Install Raspberry Pi OS Lite
 The first step is to install Raspberry Pi OS Lite on your Raspberry Pi and connect it to the network. Since I don't like to disable host_key_checking in my ansible.conf file I add my ansible control server’s public key to my Pi OS when I image the SD card with pi imager.
 Note: The steps given in this section will erase all existing content on your microSD card. If you already have Pi OS running on your Raspberry Pi you can skip the next section
 
@@ -134,7 +147,7 @@ Note: The steps given in this section will erase all existing content on your mi
 ***you can run ```iwlist wlan0 scan``` to make sure wlan0 sees this new network if you are having issues here***
 ***you can run ```sudo iwconfig``` validate all your wlan interfaces are detected***
 
-## Patching/Bypassing tunneling all network traffic the VPN tunnel (tun0)
+## Patching/Bypassing tunneling (tun0)
 1. ```sudo nano /etc/iptables.ipv4.nat```
 2. locate the line ```-A POSTROUTING -o tun0 -j MASQUERADE```
 3. comment that line out ```#-A POSTROUTING -o tun0 -j MASQUERADE```
