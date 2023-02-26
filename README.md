@@ -128,9 +128,9 @@ Note: The steps given in this section will erase all existing content on your mi
 ## Connecting to new WiFi networks when you are on the road
 1. Power on the Pi
 2. Connect to its wifi network
-3. SSH into it (172.16.35.1)
+3. SSH into it (Ansible set it to 172.16.35.1)
 4. Generate the new ssid/passphrase json
-   1. ```wpa_passphrase <NEWSSID>``` replace "<NEWSSID>" with the ssid of the network you are connecting to.
+   1. ```wpa_passphrase <NEWSSID>``` replace ```"<NEWSSID>"``` with the ssid of the network you are connecting to.
    2. Hit enter.
    3. On this next line enter the passphrase for this network.
    4. Copy this output to your clipboard.
