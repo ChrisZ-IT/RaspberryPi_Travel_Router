@@ -53,6 +53,7 @@ Note: The steps given in this section will erase all existing content on your mi
    1. Clone down this repository and edit the playbooks.
    2. Clone down this repository into a directory on your control server.
    3. Update the inventory file with your raspberry pi’s IP to it.
+
       ![website view](screenshots/8.png)
    4. Next copy your client.ovpn file to the “files” folder.
       1. rename this file to client.ovpn if its not called client.ovpn
@@ -72,6 +73,7 @@ Note: The steps given in this section will erase all existing content on your mi
 6. Enter the ssid and passphrase of the wifi network you want your Pi to connect to for internet.
    1. I'm using my old iphone7 hot spot in this example. You would just need to update /etc/wpa_supplicant/wpa_supplicant-wlan0.conf file when ever you need to connect to new wifi networks when you travel. I usually just do this via ssh since its quick.
    2. ```wpa_passphrase {{ wan_ssid }} {{ wan_pass_phrase }} >> /etc/wpa_supplicant/wpa_supplicant-wlan0.conf```
+
       ![website view](screenshots/9.png)
 7. The playbook can take a 10-15 minutes to run though depending on how many OS updates there are.
 
