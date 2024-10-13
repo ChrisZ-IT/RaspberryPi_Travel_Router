@@ -80,12 +80,13 @@ Note: The steps given in this section will erase all existing content on your mi
 2. Get its IP address from your DHCP server(or you can connect a monitor to it and see it at the login screen)
 3. From your ansible control server try and ssh into the Pi (ssh pi@IP_ADDRESS). This will ensure you can connect to the pi from your control server as well as add its public key to your ansible server key store.
 4.  Close the ssh connect to the pi (exit)
-   1. Clone down this repository and edit the playbooks.
-   2. Clone down this repository into a directory on your control server.
-   3. Update the inventory file with your raspberry pi’s IP to it.
+   1. Clone down this repository.
+   2. cd in to the newly cloned repo.
+   3. run the following command to install all the required ansible roles ```ansible-galaxy role install -r roles/requirements.yml```
+   4. Update the inventory file with your raspberry pi’s IP to it.
 
       ![website view](screenshots/8.png)
-   4. Next copy your client.ovpn file to the “files” folder.
+   5. Next copy your client.ovpn file to the “files” folder.
       1. rename this file to client.ovpn if its not called client.ovpn
       2. I highly recommend you add your client.ovpn to your .gitignore file before you ever push this repo to your own repo
 5. Update the tasks in roles/initial_setup/tasks to match your country & timezone.
