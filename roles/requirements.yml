@@ -1,5 +1,5 @@
 roles:
-  - name: inital_setup
+  - name: initial_setup
     src: https://github.com/ChrisZ-IT/initial_setup.git
     version: v1.0.0
 

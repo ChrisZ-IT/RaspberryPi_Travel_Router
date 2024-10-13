@@ -41,9 +41,9 @@
     confirm: true
   become: true
   tasks:
-    - name: Ensure intial setup is run
+    - name: Ensure initial setup is run
       ansible.builtin.include_role:
-        name: inital_setup
+        name: initial_setup
 
     - name: Ensure ssh hardening is run
       ansible.builtin.include_role:
