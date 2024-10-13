@@ -1,7 +1,0 @@
----
-- name: Ensures hostapd is installed
-  ansible.builtin.apt:
-    update_cache: true
-    install_recommends: true
-    name: hostapd
-    state: present

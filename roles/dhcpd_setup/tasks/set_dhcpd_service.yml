@@ -1,6 +1,0 @@
----
-- name: Ensure dhcpd is enabled
-  ansible.builtin.systemd:
-    name: isc-dhcp-server
-    enabled: true
-    masked: false

@@ -1,7 +1,0 @@
----
-- name: Ensure dhcpd has been installed
-  ansible.builtin.apt:
-    update_cache: true
-    install_recommends: true
-    name: isc-dhcp-server
-    state: present

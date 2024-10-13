@@ -1,3 +1,0 @@
----
-# handlers file for inital_setup
-- ansible.builtin.include_tasks: "{{ role_path }}/handlers/reboot.yml"

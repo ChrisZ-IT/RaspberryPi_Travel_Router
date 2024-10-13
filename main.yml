@@ -1,6 +1,6 @@
 ---
 - name: Ensure Pi travel router baseline is set
-  hosts: raspberry_pis
+  hosts: all
   vars_prompt:
   - name: new_user_username
     prompt: Enter new user's Username (this will replace the default 'pi' user)

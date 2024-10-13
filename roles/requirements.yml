@@ -1,0 +1,32 @@
+roles:
+  - name: inital_setup
+    src: https://github.com/ChrisZ-IT/initial_setup.git
+    version: v1.0.0
+
+  - name: ssh_hardening
+    src: https://github.com/ChrisZ-IT/ssh_hardening.git
+    version: v1.0.0
+
+  - name: openvpn_client_setup
+    src: https://github.com/ChrisZ-IT/openvpn_client_setup.git
+    version: v1.0.0
+
+  - name: dhcpd_setup
+    src: https://github.com/ChrisZ-IT/dhcpd_setup.git
+    version: v1.0.0
+
+  - name: wan_interfaces
+    src: https://github.com/ChrisZ-IT/wan_interfaces.git
+    version: v1.0.0
+
+  - name: lan_interfaces
+    src: https://github.com/ChrisZ-IT/lan_interfaces.git
+    version: v1.0.0
+
+  - name: iptables
+    src: https://github.com/ChrisZ-IT/iptables.git
+    version: v1.0.0
+
+  - name: remove_default_user
+    src: https://github.com/ChrisZ-IT/remove_default_user.git
+    version: v1.0.0

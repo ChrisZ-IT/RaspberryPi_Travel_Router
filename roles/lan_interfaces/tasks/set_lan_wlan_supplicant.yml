@@ -1,9 +1,0 @@
----
-- name: Ensure country code is set
-  ansible.builtin.lineinfile:
-    path: /etc/wpa_supplicant/wpa_supplicant-wlan1.conf
-    line: 'country=US'
-    owner: root
-    mode: 0644
-    create: true
-    state: present

@@ -1,8 +1,0 @@
----
-- name: Reboot immediately if there was a change.
-  ansible.builtin.reboot:
-  when: task_result is changed
-
-- name: Wait for the reboot to complete if there was a change.
-  ansible.builtin.wait_for_connection:
-  when: task_result is changed

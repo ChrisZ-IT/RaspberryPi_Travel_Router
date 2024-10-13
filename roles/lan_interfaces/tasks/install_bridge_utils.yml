@@ -1,7 +1,0 @@
----
-- name: Ensures bridge-utils is installed
-  ansible.builtin.apt:
-    update_cache: true
-    install_recommends: true
-    name: bridge-utils
-    state: present

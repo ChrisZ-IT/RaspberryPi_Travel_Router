@@ -1,7 +1,0 @@
----
-- name: Ensures openvpn config file exists
-  ansible.builtin.copy:
-    src: "files/client.ovpn"
-    dest: /etc/openvpn/vpn.conf
-    owner: "{{ new_user_username }}"
-    mode: 0600

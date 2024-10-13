@@ -1,6 +1,0 @@
----
-- name: Ensure hostapd service is enabled
-  ansible.builtin.systemd:
-    name: hostapd.service
-    enabled: true
-    masked: false

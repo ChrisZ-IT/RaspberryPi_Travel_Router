@@ -1,4 +1,0 @@
----
-- name: Reboot immediately if there was a change.
-  ansible.builtin.reboot:
-  when: task_result is changed

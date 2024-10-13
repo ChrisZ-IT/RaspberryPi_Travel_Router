@@ -1,2 +1,2 @@
 [raspberry_pis]
-# 172.16.1.69  # Enter IP of your raspberry pi(s)
+# 10.66.6.15 # Replace ip with you raspberry pi's IP
