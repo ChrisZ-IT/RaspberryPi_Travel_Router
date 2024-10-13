@@ -69,11 +69,11 @@
       ansible.builtin.include_role:
         name: iptables
 
-    - name: Ensure default pi user is removed
-      ansible.builtin.include_role:
-        name: remove_default_user
-      become: true
-      become_method: su
-      become_user: {{ new_user_username }}
+    # - name: Ensure default pi user is removed
+    #   ansible.builtin.include_role:
+    #     name: remove_default_user
+    #   become: true
+    #   become_method: su
+    #   become_user: {{ new_user_username }}
       # vars:
       #   ansible_become_pass: "{{ new_user_password }}"

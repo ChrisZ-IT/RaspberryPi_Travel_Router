@@ -96,7 +96,7 @@ Note: The steps given in this section will erase all existing content on your mi
 
 ## Running Ansible
 1. From your control node and within the root folder of the cloned repo run the following command.
-   1. ```ansible-playbook install_vpn -K --user pi -i inventory```
+   1. ```ansible-playbook main.yml -K -u pi -i inventory```
 2. Enter the default password for the pi user (raspberry)
 3. Enter the desired username and password for your new user (this will replace the pi user)
 4. Enter the username and password of the account you use to log into your VPN (this is to setup auto vpn login on boot)
