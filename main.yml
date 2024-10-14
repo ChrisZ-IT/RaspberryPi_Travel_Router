@@ -39,6 +39,9 @@
     prompt: Enter the passphrase of the wan wifi (the passphrase of the wifi your pi connects to for internet)
     private: true
     confirm: true
+  vars:
+    travel_router: true
+    issue_msg_path: files/issue.net
   become: true
   tasks:
     - name: Ensure initial setup is run
@@ -69,11 +72,6 @@
       ansible.builtin.include_role:
         name: iptables
 
-    # - name: Ensure default pi user is removed
-    #   ansible.builtin.include_role:
-    #     name: remove_default_user
-    #   become: true
-    #   become_method: su
-    #   become_user: {{ new_user_username }}
-      # vars:
-      #   ansible_become_pass: "{{ new_user_password }}"
+    - name: Ensure default pi user is removed
+      ansible.builtin.include_role:
+        name: remove_default_user
