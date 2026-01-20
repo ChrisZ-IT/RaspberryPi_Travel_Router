@@ -38,7 +38,7 @@ In this document we’ll show you how to edit the ansible playbooks to configure
 
     • A microSD card (8 GB or more recommended).
 
-    • A USB dongle for your Pi (I've used this one for a few years https://www.amazon.com/dp/B003MTTJOY)
+    • A USB wifi dongle for your Pi (I've used this one for a few years https://www.amazon.com/dp/B003MTTJOY)
 
     • A computer with a microSD card drive, or an SD card drive and a microSD card adapter. This computer will also need Raspberry Pi Imager installed.
 
